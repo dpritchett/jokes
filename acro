@@ -1,0 +1,5 @@
+#!/usr/bin/env /usr/local/bin/joker
+
+(ns script (:require [lib.shell :refer [sh-v]] [joker.os :refer [env]]))
+
+(sh-v "open" (get (env) "URL_ACRONYMS"))

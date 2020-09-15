@@ -1,0 +1,29 @@
+#!/usr/bin/env /usr/local/bin/joker
+
+(ns lib.color (:require [joker.string :refer [join]]))
+
+(defn _add [text n]
+  (let [
+        fmt (fn [n] (str "\u001b[" n "m"))
+        reset (fmt 0)]
+    (str (fmt n) text reset)))
+
+(defn black [text] (_add text 30))
+(defn red [text] (_add text 31))
+(defn green [text] (_add text 32))
+(defn yellow [text] (_add text 33))
+(defn blue [text] (_add text 34))
+(defn magenta [text] (_add text 35))
+(defn cyan [text] (_add text 36))
+(defn white [text] (_add text 37))
+
+(defn demo []
+  (join " "
+        [(black "black")
+         (red "red")
+         (green "green")
+         (yellow "yellow")
+         (blue "blue")
+         (magenta "magenta")
+         (cyan "cyan")
+         (white "white")]))

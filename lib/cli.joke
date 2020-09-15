@@ -1,0 +1,11 @@
+#!/usr/bin/env /usr/local/bin/joker
+
+(ns lib.cli (:require
+              [joker.os :refer [env]]
+              [joker.string :refer [join]]))
+
+(def argv-str (join " " *command-line-args*))
+
+(def HOME (get (env) "HOME"))
+(def BIN_ROOT (join "/" [HOME "bin"]))
+(def JLIB_ROOT (join "/" [BIN_ROOT "jokes" "lib"]))

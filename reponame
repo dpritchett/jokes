@@ -1,0 +1,12 @@
+#!/usr/bin/env /usr/local/bin/joker
+
+(ns script (:require
+             [joker.string :refer [trim]]
+             [joker.filepath :refer [base]]
+             [joker.os :refer [sh]]))
+
+(def result (sh "git" "rev-parse" "--show-toplevel"))
+
+(let [repo-root (get (sh "git" "rev-parse" "--show-toplevel") :out)
+      folder-name (trim (base repo-root))]
+  (println folder-name))

@@ -1,0 +1,5 @@
+#!/usr/bin/env /usr/local/bin/joker
+
+(ns script (:require [lib.git :refer [branch-name]]))
+
+(println (branch-name))

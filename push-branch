@@ -1,0 +1,8 @@
+#!/usr/bin/env /usr/local/bin/joker
+
+(ns script (:require
+             [lib.git :as git]
+             [lib.shell :as shell]))
+
+(let [branch (git/branch-name)]
+  (shell/sh-v "git" "push" "origin" branch))

@@ -1,0 +1,23 @@
+#!/usr/bin/env /usr/local/bin/joker
+
+(ns lib.git (:require
+              [joker.string :refer [split trim]]
+              [lib.shell :refer [sh-v]]
+              [joker.os :refer [sh]]))
+
+(defn branch-name []
+  "Prints the current git branch name"
+  (let [
+        base "git rev-parse --abbrev-ref HEAD"
+        cmd (split base " ")
+        result (apply sh cmd)
+        branch-name (trim (get result :out))]
+    branch-name))
+
+(defn submodule-update []
+  "Runs git submodule update to keep subs in sync."
+  (apply sh-v (split "git submodule update --init --recursive" " ")))
+
+(defn pull-branch []
+  (let [branch (branch-name)]
+    (sh-v "git" "pull" "origin" branch)))

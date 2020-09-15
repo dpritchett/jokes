@@ -1,0 +1,27 @@
+#!/usr/bin/env /usr/local/bin/joker
+
+(ns lib.browser
+  (:require [joker.string :refer [join replace split]]
+            [joker.url :refer [query-escape]]
+            [lib.cli :refer [argv-str]]
+            [joker.os :refer [sh]]))
+
+(defn open-search
+  "Open a search query in the browser.
+  `search-route` should be a valid search URL with %s in place of the search term.
+
+  Example:
+
+  (open-search \"https://www.google.com/search?q=%s\" \"bananas\")
+
+  Opens the google results page for \"bananas\"."
+  ([search-route] (open-search search-route argv-str))
+  ([search-route search-term]
+   (let
+     [q (query-escape search-term)
+      tokens (drop 2 (split search-route "/")) ; omits http://
+      host (first tokens)
+      route (replace search-route "%s" q)
+      message (str "** Looking up [" search-term "] on " host "...")]
+     (println message)
+     (sh "open" route))))

@@ -1,0 +1,16 @@
+#!/usr/bin/env /usr/local/bin/joker
+
+(ns script
+  (:require [lib.cli :refer [argv-str]]
+            [lib.shell :as shell]))
+
+(defn docker-shell
+  "Open a bash shell inside the supplied docker tag or hash."
+  [tag-or-hash]
+  (let
+    [sh-args ["run" "-ti" tag-or-hash "/bin/bash" "--login"]]
+    (shell/exec-v "docker" sh-args)))
+
+(def results (docker-shell argv-str))
+
+(println results)

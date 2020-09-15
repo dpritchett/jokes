@@ -1,0 +1,5 @@
+#!/usr/bin/env /usr/local/bin/joker
+
+(ns script (:require [lib.browser] [joker.os :refer [env]]))
+
+(lib.browser/open-search (get (env) "URL_WIKI_SEARCH"))
