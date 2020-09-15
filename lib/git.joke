@@ -5,8 +5,9 @@
               [lib.shell :refer [sh-v]]
               [joker.os :refer [sh]]))
 
-(defn branch-name []
+(defn branch-name
   "Prints the current git branch name"
+  []
   (let [
         base "git rev-parse --abbrev-ref HEAD"
         cmd (split base " ")
@@ -14,8 +15,9 @@
         branch-name (trim (get result :out))]
     branch-name))
 
-(defn submodule-update []
+(defn submodule-update
   "Runs git submodule update to keep subs in sync."
+  []
   (apply sh-v (split "git submodule update --init --recursive" " ")))
 
 (defn pull-branch []
