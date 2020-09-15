@@ -2,7 +2,7 @@
 
 (ns lib.git (:require
               [joker.string :refer [split trim]]
-              [lib.shell :refer [sh-v]]
+              [lib.shell :refer [sh-v exec-v]]
               [joker.os :refer [sh]]))
 
 (defn branch-name
@@ -20,6 +20,6 @@
   []
   (apply sh-v (split "git submodule update --init --recursive" " ")))
 
-(defn pull-branch []
-  (let [branch (branch-name)]
-    (sh-v "git" "pull" "origin" branch)))
+(defn pull-branch
+  ([] pull-branch (branch-name))
+  ([branch] (exec-v "git" ["pull" "origin" branch])))

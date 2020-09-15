@@ -8,8 +8,8 @@
   "Verbosely execute a script via joker.os/sh."
   [bin & args]
   (apply println (c/cyan "Executing:\t") bin args)
-  (apply sh bin args)
-  (println (c/cyan "  Complete.")))
+  (let [result (apply sh bin args)]
+  (println (str result (c/cyan "\n  Complete.")))))
 
 (defn exec-v
   "Verbosely execute a script via joker.os/exec."
@@ -17,7 +17,7 @@
   (let [opts { :args args :stdin *in* :stdout *out* :err *err*}]
     (apply println (c/cyan "Executing:\t") bin args)
     (let [result (exec bin opts)]
-      (println (str (c/cyan result "\n  Complete."))))))
+      (println (str result (c/cyan "\n  Complete."))))))
 
 (defn exec-q
   "Quietly execute a script via joker.os/exec"

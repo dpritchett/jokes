@@ -1,10 +1,11 @@
 #!/usr/bin/env /usr/local/bin/joker
 
 (ns script (:require
+             [lib.cli :refer [argv-str]]
              [lib.git :as git]
              [lib.shell :as shell]))
 
-(let [branch (git/branch-name)]
-  (shell/sh-v "git" "co" branch)
-  (git/pull-branch)
+(let [branch argv-str]
+  (shell/sh-v "git" "checkout" branch)
+  (git/pull-branch branch)
   (git/submodule-update))
