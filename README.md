@@ -1,5 +1,7 @@
 # @dpritchett's Jokes
 
+![screenshot of push-branch in action](./doc/img/push-branch.png)
+
 Convenient personal shell scripts written in Joker.
 
 __What's Joker and why are you using it for convenience scripts?__
