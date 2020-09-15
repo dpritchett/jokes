@@ -18,8 +18,8 @@
 (defn submodule-update
   "Runs git submodule update to keep subs in sync."
   []
-  (apply sh-v (split "git submodule update --init --recursive" " ")))
+  (sh-v "git" "submodule" "update" "--init" "--recursive"))
 
 (defn pull-branch
-  ([] pull-branch (branch-name))
+  ([] (pull-branch (branch-name)))
   ([branch] (exec-v "git" ["pull" "origin" branch])))

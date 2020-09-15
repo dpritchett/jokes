@@ -6,6 +6,7 @@
              [lib.shell :as shell]))
 
 (let [branch argv-str]
-  (shell/sh-v "git" "checkout" branch)
-  (git/pull-branch branch)
-  (git/submodule-update))
+  (and
+    (shell/sh-v "git" "checkout" branch)
+    (git/pull-branch branch)
+    (git/submodule-update)))
