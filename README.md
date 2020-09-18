@@ -1,6 +1,6 @@
 # @dpritchett's Jokes
 
-![screenshot of push-branch in action](./doc/img/push-branch.png)
+![screenshot of open-branch in action](./doc/img/open-branch.png)
 
 Convenient personal shell scripts written in Joker.
 
