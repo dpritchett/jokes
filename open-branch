@@ -8,5 +8,4 @@
 (let [branch argv-str]
   (and
     (shell/sh-v "git" "checkout" branch)
-    (git/pull-branch branch)
-    (git/submodule-update)))
+    (git/pull-branch branch)))

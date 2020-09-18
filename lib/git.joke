@@ -22,4 +22,5 @@
 
 (defn pull-branch
   ([] (pull-branch (branch-name)))
-  ([branch] (exec-v "git" ["pull" "origin" branch])))
+  ([branch] (exec-v "git" ["pull" "origin" branch])
+   (submodule-update)))
