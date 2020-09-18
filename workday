@@ -2,4 +2,4 @@
 
 (ns script (:require [lib.browser] [joker.os :refer [env]]))
 
-(lib.browser/open-search (get (env) "URL_INTRANET_SEARCH"))
+(lib.browser/open-search (get (env) "URL_WORKDAY_SEARCH"))
