@@ -5,7 +5,16 @@
              [lib.git :as git]
              [lib.shell :as shell]))
 
+(defn no-masters [branch]
+  (if (= "master" branch)
+    (do
+      (println "** No master branches! **")
+      (shell/sh "say" "use mayne instead of master")
+      false)
+    true))
+
 (let [branch argv-str]
   (and
+    (no-masters branch)
     (shell/sh-v "git" "checkout" branch)
     (git/pull-branch branch)))
