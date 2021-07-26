@@ -1,0 +1,13 @@
+#!/usr/bin/env /usr/local/bin/joker
+
+(ns script
+ (:require [lib.shell :as shell]))
+
+(defn git-fetch-all
+ "Fetch git from everywhere"
+ []
+ (let
+  [sh-args ["fetch" "--all"]]
+  (shell/exec-v "git" sh-args)))
+
+(println (git-fetch-all))
