@@ -1,4 +1,4 @@
-#!/usr/bin/env /usr/local/bin/joker
+#!/usr/bin/env joker
 
 (ns script (:require [lib.browser] [joker.os :refer [env]]))
 

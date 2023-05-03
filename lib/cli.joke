@@ -1,4 +1,4 @@
-#!/usr/bin/env /usr/local/bin/joker
+#!/usr/bin/env joker
 
 (ns lib.cli (:require
               [joker.os :refer [env]]

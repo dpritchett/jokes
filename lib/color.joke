@@ -1,4 +1,4 @@
-#!/usr/bin/env /usr/local/bin/joker
+#!/usr/bin/env joker
 
 (ns lib.color (:require [joker.string :refer [join]]))
 
