@@ -5,6 +5,16 @@
               [lib.shell :refer [sh-v exec-v]]
               [joker.os :refer [sh]]))
 
+(defn short-sha
+  "Prints the current git commit's short SHA"
+  []
+  (let [
+        base "git rev-parse --short HEAD"
+        cmd (split base " ")
+        result (apply sh cmd)
+        branch-name (trim (get result :out))]
+    branch-name))
+
 (defn branch-name
   "Prints the current git branch name"
   []
